@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2020_01_03_222554) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.boolean "default"
+    t.string "name", null: false
+    t.boolean "default", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
