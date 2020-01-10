@@ -46,6 +46,11 @@ puts "Created user #{user.email}."
 
 AMOUNT_OF_EXPENSES = 200
 AMOUNT_OF_EXPENSES.times do
-  Expense.create(user: user, category_id: rand(DEFAULT_CATEGORIES.size + 1), amount: rand(1000) / 10.0)
+  Expense.create(
+    user: user,
+    category_id: rand(DEFAULT_CATEGORIES.size + 1),
+    amount: rand(1000) / 10.0,
+    date: Date.parse("1/12/2019") + (rand 31).days
+  )
 end
 puts "Created #{AMOUNT_OF_EXPENSES} random expenses."
