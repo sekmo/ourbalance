@@ -3,6 +3,8 @@ class Expense < ApplicationRecord
   belongs_to :category
   validates :amount, presence: true
 
+  scope :by_user, ->(user) { where(user: user) }
+
   DEFAULT_CATEGORIES = [
     { name: "Groceries" },
     { name: "Coffee and Cakes" },

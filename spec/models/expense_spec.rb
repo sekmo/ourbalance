@@ -6,14 +6,11 @@ RSpec.describe Expense, type: :model do
       mario = FactoryBot.create(:user)
       franco = FactoryBot.create(:user)
 
-      category_groceries = FactoryBot.create(:category, name: "Groceries", default: true)
-      category_breakfast = FactoryBot.create(:category, name: "Breakfast", default: true)
-      category_dinner = FactoryBot.create(:category, name: "Dinner", default: true)
+      mario_expense_1 = FactoryBot.create(:expense, user: mario)
+      mario_expense_2 = FactoryBot.create(:expense, user: mario)
+      franco_expense_2 = FactoryBot.create(:expense, user: franco)
 
-      expense_1 = FactoryBot.create(:expense, user: mario, category: category_groceries, amount: 12.50, date: "2019/01/01")
-      expense_2 = FactoryBot.create(:expense, user: mario, category: category_groceries, amount: 10, date: "2019/01/02")
-
-      expect(Expense.by_user(mario)).to eq([expense_1, expense_2])
+      expect(Expense.by_user(mario)).to eq([mario_expense_1, mario_expense_2])
     end
   end
 end
